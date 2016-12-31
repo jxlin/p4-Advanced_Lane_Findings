@@ -23,5 +23,8 @@ All the steps above can be viewed in the youtube video below.
 List of files below,
 
 1. main_undistort_camera.ipynb Ipython notebook to generate distortion parameters and camera matrix. 
-2. main_lane_markings_22.ipynb Ipython notebook with code to analysis individual camera image
-3. main_lane_markings_fin2.ipynb Ipython notebook with code to analyse the whole video. 
+2. camera_calibration.pkl pickle file with distortion parameters and camera matrix values, to be used in main_lane_markings_* files for undistorting camera image. 
+3. main_lane_markings_22.ipynb Ipython notebook with code to analysis individual camera image
+4. main_lane_markings_fin2.ipynb Ipython notebook with code to analyse the whole video. 
+5. project_video.mp4, project_video_output.mp4 and project_video_output_diagnosis.mp4 project video, output video and diagnosis video of project video file. 
+
