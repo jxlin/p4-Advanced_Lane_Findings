@@ -1,19 +1,27 @@
-## Advanced Lane Finding
+## Robust lane finding using advanced computer vision techniques: Mid project update
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-The goals / steps of this project are the following:  
+This repository is the code accompanying medium post [Robust lane finding using advanced computer vision techniques: Mid project update](https://medium.com/@vivek.yadav/robust-lane-finding-using-advanced-computer-vision-techniques-mid-project-update-540387e95ed3#.yra5pu3j6)
 
-* Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
-* Apply the distortion correction to the raw image.  
-* Use color transforms, gradients, etc., to create a thresholded binary image.
-* Apply a perspective transform to rectify binary image ("birds-eye view"). 
-* Detect lane pixels and fit to find lane boundary.
-* Determine curvature of the lane and vehicle position with respect to center.
-* Warp the detected lane boundaries back onto the original image.
-* Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
----
+Lane finding is crucial for developing algorithms for autonomous driving robots or self-driving cars. The lane-finding algorithm must be robust to changing light conditions, weather conditions, other cars/vehicles on the road, curvature of road and type of road itself. In this post, we present an algorithm based on advanced computer vision techniques to identify left and right lanes from dash-mounted camera video. We implemented the lane finding algorithm in the following steps,
 
-The images for camera calibration are stored in the folder called `camera_cal`.  The images in `test_images` are for testing your pipeline on single frames.  The video called `project_video.mp4` is the video your pipeline should work well on.  `challenge_video.mp4` is an extra (and optional) challenge for you if you want to test your pipeline.
+1. Undistort camera image and apply perspective transform to get a bird-eye view of the street.
+2. Convert to HSV colorspace and apply color mask to identify yellow lines
+3. Apply Sobel filters to get image with potential line/edges
+4. Combine binary masks from Sobel filters and HSV color masks
+5. Apply moving average filter to remove any markings or features that could be due to other artifacts in the image.
+6. Apply polynomial regression to compute the left and right lanes
+7. Apply frame to frame smoothing to discard noise between images, and draw lines back on the image.
+8. Compute curvature and lane deviation and write them on the image.
 
-If you're feeling ambitious (totally optional though), don't stop there!  We encourage you to go out and take video of your own, calibrate your camera and show us how you would implement this project from scratch!
+All the steps above can be viewed in the youtube video below. 
+
+[![Diagnostics for advanced lane finding using computer vision](https://img.youtube.com/vi/PJ8i0VY_pug/0.jpg)](https://www.youtube.com/watch?v=PJ8i0VY_pug)
+
+
+List of files below,
+
+1. main_undistort_camera.ipynb Ipython notebook to generate distortion parameters and camera matrix. 
+2. main_lane_markings_22.ipynb Ipython notebook with code to analysis individual camera image
+3. main_lane_markings_fin2.ipynb Ipython notebook with code to analyse the whole video. 
